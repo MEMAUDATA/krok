@@ -2,11 +2,24 @@
 # NV, Toulouse,07/2025
 
 import streamlit as st
+from streamlit.web.server.websocket_headers import _get_websocket_headers
 import os
 import pandas as pd
-import numpy as np
+import numpy as npsource
 
 from modules.synthesis import synthesis
+
+# Désactive X-Frame-Options (à utiliser avec prudence !)
+def _set_websocket_headers():
+    headers = _get_websocket_headers()
+    if "X-Frame-Options" in headers:
+        del headers["X-Frame-Options"]
+    return headers
+
+st.set_page_config(layout="wide")
+
+
+
 
 st.html("<h1 style='text-align:center;color:#22573b;'>Krok</h1>")
 #color:#2B176C
