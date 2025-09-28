@@ -16,7 +16,7 @@ def _set_websocket_headers():
         del headers["X-Frame-Options"]
     return headers
 
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide")
 
 
 
