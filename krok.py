@@ -16,7 +16,7 @@ def _set_websocket_headers():
         del headers["X-Frame-Options"]
     return headers
 
-#st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 
 
@@ -30,6 +30,7 @@ st.html("""<div style="height: 10px;"></div>""")
 # upload section written with html
 csvfiles = st.file_uploader("Upload file(s) in .csv,.xls,.xlsx", accept_multiple_files=True,type=['.csv','.xls','xlsx'])
 st.html("""<div style="height: 10px;"></div>""") 
+
 
 
 #  Button to trigger processing
