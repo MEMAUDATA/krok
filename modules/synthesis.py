@@ -8,7 +8,6 @@ def synthesis(data):
     NV, Toulouse, 07/2025
 
     """
-
     all_date = []
     all_total = []
     df = pd.DataFrame([])
@@ -35,6 +34,20 @@ def synthesis(data):
 
     df['Day of Week'] = df['date'].dt.day_name()  # Extract day of the week
 
+   
+    # Define weekday order
+    weekday_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-    income_per_day = df.groupby('Day of Week')['Total'].agg(['mean', 'std','sum'])
-    return income_per_day,df
+    # Convert to categorical with ordered weekdays
+    df['Day of Week'] = pd.Categorical(df['Day of Week'], categories=weekday_order, ordered=True)
+
+    # Group and sort by weekday order
+    income_per_day = (
+        df.groupby('Day of Week')['Total']
+          .agg(['mean', 'std', 'sum'])
+          .reindex(weekday_order)   # ensures Monday first
+    )
+
+    return income_per_day, df
+
+
