@@ -43,7 +43,7 @@ def synthesis(data):
 
     # Group and sort by weekday order
     income_per_day = (
-        df.groupby('Day of Week')['Total']
+        df.groupby('Day of Week', observed=True)['Total']
           .agg(['mean', 'std', 'sum'])
           .reindex(weekday_order)   # ensures Monday first
     )
