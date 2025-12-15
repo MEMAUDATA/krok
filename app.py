@@ -5,7 +5,6 @@ import streamlit as st
 import os
 import pandas as pd
 import numpy as np
-import plotly.express as px
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 
@@ -61,7 +60,11 @@ def table_data(df,filename):
     }
 )        
 
-    st.plotly_chart(fig)
+    fig.update_layout(
+    margin=dict(l=100, r=100, t=40, b=0),  # marges réduites
+    height=320                             # hauteur plus compacte
+)
+    st.plotly_chart(fig, use_container_width=True)
 
 def best_days_per_year(csvfiles):
 
@@ -93,6 +96,7 @@ def best_days_per_year(csvfiles):
         cols = st.columns(3)
         with cols[1]:
             find_annual_growth(csvfiles[0])
+
 
 def main():
     """
@@ -143,9 +147,9 @@ def main():
                         st.pyplot(fig, clear_figure=True)
 
                     
+    #  Button to trigger ppt downloading : in progress !
+    #if st.sidebar.button("Print report", key="print_report"):
 
             
-
-   
 if __name__ == '__main__':
     main()

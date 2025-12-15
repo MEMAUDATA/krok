@@ -1,16 +1,11 @@
 # use in cmd window : pip install -r requirements.txt
 seaborn
-prophet==1.1.7
 matplotlib
 numba
 numpy==1.24.4
 pandas
-cmake==4.1.0
 # To avoid issues with pyarrow and cmake use pyarrow version 17.0.0 before updating if necessary
 pyarrow==14.0.0
 streamlit
-#streamlit-navigation-bar # custom navbar
-ipykernel
-matplotlib-inline
-lxml
 fpdf
+plotly
