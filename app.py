@@ -64,7 +64,7 @@ def table_data(df,filename):
     margin=dict(l=100, r=100, t=40, b=0),  # marges réduites
     height=320                             # hauteur plus compacte
 )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig,width='stretch')
 
 def best_days_per_year(csvfiles):
 
@@ -147,9 +147,6 @@ def main():
                         st.pyplot(fig, clear_figure=True)
 
                     
-    #  Button to trigger ppt downloading : in progress !
-    #if st.sidebar.button("Print report", key="print_report"):
-
-            
+ 
 if __name__ == '__main__':
     main()
